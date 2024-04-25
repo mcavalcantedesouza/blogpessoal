@@ -49,12 +49,16 @@ export class UsuarioService {
         let buscaUsuario = await this.findByUsuario(usuario.usuario)
 
         if (!buscaUsuario){
+            if (!usuario.foto)
+                usuario.foto = 'https://i.imgur.com/Sk5SjWE.jpg'
+            
             usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha)
-            return await this.usuarioRepository.save(usuario)
+            return await this.usuarioRepository.save(usuario)     
         }
 
         throw new HttpException('O Usuário já existe!', HttpStatus.BAD_REQUEST)
 
+        
     }
 
     async update(usuario: Usuario): Promise<Usuario> {
