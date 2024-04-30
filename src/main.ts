@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('Blog Pessoal')
   .setDescription('Projeto Blog Pessoal')
-  .setContact("Michel Cavalcante","https://www.linkedin.com/in/dev-cavalcante/","michelc.desouza@gmail.com")
+  .setContact("Michel Cavalcante","https://github.com/mcavalcantedesouza","michelc.desouza@gmail.com")
   .setVersion('1.0')
   .addBearerAuth()
   .build();
@@ -22,6 +22,6 @@ async function bootstrap() {
 
   app.enableCors();
   
-  await app.listen(4000);
+  await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
